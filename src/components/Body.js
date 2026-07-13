@@ -1,19 +1,28 @@
 import React from "react";
-import Login from "./Login";
+import Template from "./Template";
 import Browse from "./Browse";
 import { createBrowserRouter, RouterProvider } from "react-router";
+import Content from "./Content";
+import LoginForm from "./LoginForm";
 
 const Body = () => {
   const router = createBrowserRouter([
     {
-      id: "login",
+      id: "template",
       path: "/",
-      element: <Login />,
-    },
-    {
-      id: "browse",
-      path: "/browse",
-      element: <Browse />,
+      element: <Template />,
+      children: [
+        {
+          id: "login",
+          path: "",
+          element: <LoginForm />,
+        },
+        {
+          id: "browse",
+          path: "/browse",
+          element: <Browse />,
+        },
+      ],
     },
   ]);
   return <RouterProvider router={router} />;

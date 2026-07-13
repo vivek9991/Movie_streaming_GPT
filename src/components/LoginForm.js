@@ -1,47 +1,132 @@
 import React from "react";
-import { Link } from "react-router";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router";
+import { validateForm } from "./utils/formValidator";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { auth } from "./utils/firebase";
+import { setUserData } from "./utils/UserSlice";
 
 const LoginForm = () => {
   const [signUp, setSignUp] = React.useState(false);
+  const [error, setError] = React.useState(null);
+  const email = React.useRef(null);
+  const password = React.useRef(null);
+  const name = React.useRef(null);
+  const confirmPassword = React.useRef(null);
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
   return (
     <form
       className="loginForm"
-      onSubmit={() => {
-        alert("form submitted");
+      onSubmit={(e) => {
+        e.preventDefault();
+        const err = validateForm(
+          email.current?.value,
+          password.current?.value,
+          name.current?.value,
+          confirmPassword.current?.value,
+        );
+        setError(err);
+        if (!err) {
+          if (signUp) {
+            createUserWithEmailAndPassword(
+              auth,
+              email.current.value,
+              password.current.value,
+            )
+              .then((userCredential) => {
+                const user = userCredential.user;
+                updateProfile(auth.currentUser, {
+                  displayName: name.current?.value,
+                })
+                  .then(() => {
+                    user.displayName = name.current?.value;
+                    dispatch(setUserData(user));
+                    navigate("/browse");
+                  })
+                  .catch(() => {
+                    dispatch(setUserData(user));
+                    navigate("/browse");
+                  });
+              })
+              .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage);
+              });
+          } else {
+            //sign in
+            signInWithEmailAndPassword(
+              auth,
+              email.current.value,
+              password.current.value,
+            )
+              .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                dispatch(setUserData(user));
+                navigate("/browse");
+              })
+              .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage);
+              });
+          }
+        }
       }}
     >
       <div style={{ color: "white", fontSize: "30px" }}>
         {signUp ? "Sign Up" : "Sign In"}
       </div>
       {signUp && (
-        <input
-          type="text"
-          name="name"
-          placeholder="Full name"
-          className="formInput"
-        />
+        <>
+          <input
+            ref={name}
+            type="text"
+            name="name"
+            placeholder="Full name"
+            className="formInput"
+          />
+          <div style={{ color: "orange", fontSize: "13px" }}>{error?.name}</div>
+        </>
       )}
 
       <input
+        ref={email}
         type="text"
         name="loginId"
         placeholder="Email or phone number"
         className="formInput"
       />
+      <div style={{ color: "orange", fontSize: "13px" }}>{error?.email}</div>
 
       <input
+        ref={password}
         type="password"
         placeholder="Password"
         name="password"
         className="formInput"
       />
+      <div style={{ color: "orange", fontSize: "13px" }}>{error?.password}</div>
       {signUp && (
-        <input
-          type="password"
-          placeholder="Confirm password"
-          name="confirmPassword"
-          className="formInput"
-        />
+        <>
+          <input
+            ref={confirmPassword}
+            type="password"
+            placeholder="Confirm password"
+            name="confirmPassword"
+            className="formInput"
+          />
+          <div style={{ color: "orange", fontSize: "13px" }}>
+            {error?.confirmPassword}
+          </div>
+        </>
       )}
       <button className="signInBtn">{signUp ? "Sign Up" : "Sign In"}</button>
       <div className="formMetadata">

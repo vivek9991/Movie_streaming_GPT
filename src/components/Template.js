@@ -1,13 +1,13 @@
 import Header from "./Header";
-import Content from "./Content";
 import React from "react";
-import LoginForm from "./LoginForm";
+import { Outlet } from "react-router";
+import Content from "./Content";
 const Login = () => {
   return (
     <div style={{ position: "relative" }}>
       <Header />
       <Content />
-      <LoginForm />
+      <Outlet />
     </div>
   );
 };
