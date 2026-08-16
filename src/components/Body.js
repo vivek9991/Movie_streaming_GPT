@@ -22,6 +22,11 @@ const Body = () => {
           path: "/browse",
           element: <Browse />,
         },
+        {
+          id: "error",
+          path: "*",
+          element: <Browse />,
+        },
       ],
     },
   ]);

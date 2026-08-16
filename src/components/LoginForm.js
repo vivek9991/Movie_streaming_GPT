@@ -1,6 +1,6 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router";
 import { validateForm } from "./utils/formValidator";
 import {
   createUserWithEmailAndPassword,
@@ -17,7 +17,6 @@ const LoginForm = () => {
   const password = React.useRef(null);
   const name = React.useRef(null);
   const confirmPassword = React.useRef(null);
-  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   return (
@@ -43,16 +42,13 @@ const LoginForm = () => {
                 const user = userCredential.user;
                 updateProfile(auth.currentUser, {
                   displayName: name.current?.value,
-                })
-                  .then(() => {
-                    user.displayName = name.current?.value;
-                    dispatch(setUserData(user));
-                    navigate("/browse");
-                  })
-                  .catch(() => {
-                    dispatch(setUserData(user));
-                    navigate("/browse");
-                  });
+                });
+                dispatch(
+                  setUserData({
+                    ...auth.currentUser,
+                    displayName: name.current?.value,
+                  }),
+                );
               })
               .catch((error) => {
                 const errorCode = error.code;
@@ -65,18 +61,11 @@ const LoginForm = () => {
               auth,
               email.current.value,
               password.current.value,
-            )
-              .then((userCredential) => {
-                // Signed in
-                const user = userCredential.user;
-                dispatch(setUserData(user));
-                navigate("/browse");
-              })
-              .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                alert(errorMessage);
-              });
+            ).catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              alert(errorMessage);
+            });
           }
         }
       }}
