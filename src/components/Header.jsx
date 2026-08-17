@@ -25,7 +25,12 @@ const Header = () => {
   }, []);
   return (
     <>
-      <img className="netflixLogo" src={LOGO} alt="netflixlogo" />
+      <img
+        style={{ zIndex: 100 }}
+        className="netflixLogo"
+        src={LOGO}
+        alt="netflixlogo"
+      />
       <div
         style={{
           position: "absolute",
@@ -33,6 +38,7 @@ const Header = () => {
           right: "20px",
           top: "20px",
           display: "flex",
+          zIndex: 100,
         }}
       >
         {userData?.displayName}

@@ -13,3 +13,5 @@ export const options = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZWM4Zjk4NTk2ZDc0Y2ExOTM5ODM5NmM4NjNiN2M3MSIsIm5iZiI6MTc4NDIyNTU2NS43ODcwMDAyLCJzdWIiOiI2YTU5MWYxZDM0MjQ5OTkxNjg2MjcxOGQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.Ykmy39cR9GTd20-prXFBv69YdXMQ2YkYeF35I-Ybyfs",
   },
 };
+
+export const categoryCount = 5;

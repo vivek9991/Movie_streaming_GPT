@@ -15,7 +15,12 @@ const Body = () => {
         {
           id: "login",
           path: "",
-          element: <LoginForm />,
+          element: (
+            <>
+              <Content />
+              <LoginForm />
+            </>
+          ),
         },
         {
           id: "browse",

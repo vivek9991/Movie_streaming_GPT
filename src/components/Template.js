@@ -6,7 +6,6 @@ const Login = () => {
   return (
     <div style={{ position: "relative" }}>
       <Header />
-      <Content />
       <Outlet />
     </div>
   );

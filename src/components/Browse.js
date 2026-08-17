@@ -1,21 +1,25 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
-import { GetMovieUrl, options } from "./utils/constants";
-import { setMovieList } from "./utils/movieListSlice";
+import { useMovieList } from "./hooks/useMovieList";
+import MainComponent from "./MainComponent";
+import ChildComponent from "./ChildComponent";
 
 const Browse = () => {
-  const dispatch = useDispatch();
-  React.useEffect(() => {
-    fetch(GetMovieUrl, options)
-      .then((res) => res.json())
-      .then((json) => dispatch(setMovieList(json.results)))
-      .catch((err) => console.error(err));
-  }, []);
-
-  const movieList = useSelector((store) => store.movieList.movieList);
+  const movieList = useMovieList();
   console.log(movieList?.length);
-  return <div style={{ color: "blue", zIndex: 100 }}>{movieList?.length}</div>;
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: "0px",
+        width: "100%",
+        height: "80vh",
+      }}
+    >
+      <MainComponent />
+      {/* <ChildComponent /> */}
+    </div>
+  );
 };
 
 export default Browse;
