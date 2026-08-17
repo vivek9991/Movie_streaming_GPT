@@ -12,12 +12,12 @@ const VideoComponent = ({ movieId }) => {
         width: "100%",
         aspectRatio: "16/9",
         border: "none",
+        marginTop: "-110px",
       }}
-      src={`https://www.youtube.com/embed/${trailerId}?autoplay=1&mute=1&loop=1&playlist=${trailerId}&controls=0&rel=0`}
+      src={`https://www.youtube.com/embed/${trailerId}?autoplay=1&mute=1&loop=1&playlist=${trailerId}&controls=0&rel=0&cc_load_policy=0`}
       title="Movie trailer"
-      allow="autoplay; encrypted-media; picture-in-picture"
+      allow="autoplay; encrypted-media"
       referrerPolicy="strict-origin-when-cross-origin"
-      allowFullScreen
     />
   );
 };

@@ -14,4 +14,4 @@ export const options = {
   },
 };
 
-export const categoryCount = 5;
+export const movieUrl = "https://image.tmdb.org/t/p/w200/";

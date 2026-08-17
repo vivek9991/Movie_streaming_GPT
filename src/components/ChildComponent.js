@@ -1,12 +1,38 @@
-import TileComponent from "./TileComponent";
+import TilesComponent from "./TilesComponent";
 import { categoryCount } from "./utils/constants";
 
 const ChildComponent = () => {
-  const categoryArr = new Array(5).fill("dummy");
+  const categoryArr = ["now_playing", "popular", "top_rated", "upcoming"];
   return (
-    <div>
+    <div
+      style={{
+        backgroundColor: "black",
+        marginTop: "-160px",
+        position: "relative",
+        zIndex: 1,
+        paddingTop: "20px",
+      }}
+    >
       {categoryArr.map((category) => (
-        <TileComponent />
+        <div
+          key={category}
+          style={{
+            marginTop: "-5px",
+            marginBottom: "40px",
+            marginLeft: "20px",
+          }}
+        >
+          <div
+            style={{ color: "white", fontSize: "30px", marginBottom: "10px" }}
+          >
+            {category === "now_playing"
+              ? "Now playing"
+              : category === "top_rated"
+                ? "Top rated"
+                : category[0].toUpperCase() + category.slice(1)}
+          </div>
+          <TilesComponent category={category} />
+        </div>
       ))}
     </div>
   );

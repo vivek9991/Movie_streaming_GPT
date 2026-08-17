@@ -12,7 +12,7 @@ const TextComponent = ({ mainMovie }) => {
         background: "linear-gradient(to right, black, transparent)",
       }}
     >
-      <h1 style={{ paddingTop: "50vh", color: "white" }}>
+      <h1 style={{ paddingTop: "35vh", color: "white" }}>
         {mainMovie.original_title}
       </h1>
       <p

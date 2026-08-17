@@ -17,7 +17,7 @@ const Browse = () => {
       }}
     >
       <MainComponent />
-      {/* <ChildComponent /> */}
+      <ChildComponent />
     </div>
   );
 };
