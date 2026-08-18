@@ -1,16 +1,19 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router";
-import { setUserData } from "./utils/UserSlice";
+import { setUserData, toggleLanguage } from "./utils/UserSlice";
 import { signOut } from "firebase/auth";
 import { auth } from "./utils/firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { LOGO } from "./utils/constants";
+import { languageType, LOGO, supportedLanguages } from "./utils/constants";
+import GPTPanel from "./GPTPanel";
+import { language } from "./utils/language";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userData = useSelector((store) => store.user.user);
+  const defaultLanguage = useSelector((store) => store.user.defaultLanguage);
   React.useEffect(() => {
     const unsubsribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -23,6 +26,8 @@ const Header = () => {
     });
     return () => unsubsribe();
   }, []);
+
+  const [openGPTPanel, setOpenGPTPanel] = React.useState(false);
   return (
     <>
       <img
@@ -41,6 +46,37 @@ const Header = () => {
           zIndex: 100,
         }}
       >
+        {userData && !openGPTPanel && (
+          <>
+            <Link
+              style={{
+                color: "white",
+                textDecoration: "none",
+                cursor: "pointer",
+                marginRight: "10px",
+              }}
+              to="/browse"
+              onClick={() => setOpenGPTPanel(true)}
+            >
+              GPT Search
+            </Link>
+
+            {/* <button
+              style={{
+                width: "150px",
+                border: "none",
+                background: "transparent",
+                color: "white",
+                fontSize: "15px",
+              }}
+              onClick={() => dispatch(toggleLanguage())}
+            >
+              {defaultLanguage === languageType.Hindi
+                ? language.hindi.changeLanguage
+                : language.en.changeLanguage}
+            </button> */}
+          </>
+        )}
         {userData?.displayName}
         {userData && (
           <div
@@ -56,6 +92,29 @@ const Header = () => {
           >
             Sign out
           </div>
+        )}
+        {openGPTPanel && (
+          <select
+            onChange={(e) => dispatch(toggleLanguage(e.target.value))}
+            style={{
+              backgroundColor: "transparent",
+              color: "white",
+              border: "1px solid white",
+              borderRadius: "10px",
+              marginLeft: "15px",
+              marginTop: "-5px",
+              padding: "5px",
+            }}
+          >
+            {supportedLanguages.map((languageOption) => (
+              <option key={languageOption.value} value={languageOption.value}>
+                {languageOption.label}
+              </option>
+            ))}
+          </select>
+        )}
+        {userData && openGPTPanel && (
+          <GPTPanel setOpenGPTPanel={setOpenGPTPanel} />
         )}
       </div>
     </>

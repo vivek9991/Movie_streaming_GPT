@@ -67,3 +67,50 @@
 .mainMovieBtn:hover {
   opacity: 0.8;
 }
+
+.dialogBox {
+  background-color: rgb(34, 29, 29);
+  width: 50vw;
+  height: 50vh;
+  position: absolute;
+  top: 25vh;
+  left: -55vw;
+  opacity: 98%;
+}
+
+.GPTSearchBox {
+  width: 250px;
+  height: 30px;
+  left: 12vw;
+  top: 55px;
+  position: relative;
+  font-size: 15px;
+  font-family:
+    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border: 2px solid rgb(111, 111, 233);
+  border-radius: 5px;
+  padding-left: 5px;
+}
+
+.GPTSearchBtn {
+  left: 13vw;
+  top: 55px;
+  position: relative;
+  background-color: red;
+  color: white;
+  width: 100px;
+  height: 30px;
+  border: 2px solid red;
+  border-radius: 5px;
+}
+
+.GPTCloseBtn {
+  color: white;
+  text-decoration: none;
+  right: -330px;
+  bottom: -385px;
+  position: relative;
+
+  cursor: pointer;
+}

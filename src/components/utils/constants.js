@@ -1,3 +1,5 @@
+import { language } from "./language";
+
 export const CONTENT_IMG =
   "https://assets.nflxext.com/ffe/siteui/vlv3/81b52f88-dc76-488d-a939-0cf13a260a6e/web/IN-en-20260622-TRIFECTA-perspective_d39d60ef-cb5a-4793-9546-0a8d9a87948e_large.jpg";
 export const LOGO =
@@ -15,3 +17,15 @@ export const options = {
 };
 
 export const movieUrl = "https://image.tmdb.org/t/p/w200/";
+
+export const languageType = {
+  English: "en",
+  Hindi: "hindi",
+  Spanish: "spanish",
+};
+
+export const supportedLanguages = [
+  { value: languageType.English, label: language.common.English },
+  { value: languageType.Hindi, label: language.common.Hindi },
+  { value: languageType.Spanish, label: language.common.Spanish },
+];
