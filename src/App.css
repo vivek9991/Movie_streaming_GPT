@@ -11,17 +11,7 @@
 .netflixLogo {
   height: 80px;
   position: absolute;
-  left: 100px;
-}
-
-.loginForm {
-  width: 20vw;
-  height: 50vh;
-  position: absolute;
-  top: 20%;
-  left: 35%;
-  background-color: rgba(0, 0, 0, 0.862);
-  padding: 55px;
+  left: 10px;
 }
 
 .formInput {
@@ -70,27 +60,12 @@
 
 .dialogBox {
   background-color: rgb(34, 29, 29);
-  width: 55vw;
-  height: 60vh;
+  width: 80vw;
+  height: 40vh;
   position: absolute;
   top: 25vh;
   left: -58vw;
   opacity: 98%;
-}
-
-.GPTSearchBox {
-  width: 250px;
-  height: 30px;
-  left: 17vw;
-  top: 45px;
-  position: relative;
-  font-size: 15px;
-  font-family:
-    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  border: 2px solid rgb(111, 111, 233);
-  border-radius: 5px;
-  padding-left: 5px;
 }
 
 .GPTSearchBtn {
@@ -106,12 +81,146 @@
   cursor: pointer;
 }
 
+.headerMedia {
+  display: flex;
+  flex-direction: column;
+}
+
+.trailerVideo {
+  margin-top: -30px;
+  margin-bottom: 150px;
+}
+.languageSelect {
+  margin-top: 8px;
+}
+
+.GPTSearchBox {
+  width: 150px;
+  height: 30px;
+  left: 10vw;
+  top: 15px;
+  position: relative;
+  font-size: 15px;
+  font-family:
+    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border: 2px solid rgb(111, 111, 233);
+  border-radius: 5px;
+  padding-left: 5px;
+}
+
+.GPTSearchBtn {
+  left: 12vw;
+  top: 15px;
+  position: relative;
+  background-color: red;
+  color: white;
+  width: 100px;
+  height: 30px;
+  border: 2px solid red;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.movieTileImg {
+  height: 150px;
+  width: 100px;
+  margin-right: 10px;
+  margin-top: -50px;
+}
+
+.trailerText {
+  top: -250px;
+  padding-left: 20px;
+  aspect-ratio: 6/9;
+}
+
 .GPTCloseBtn {
   color: white;
   text-decoration: none;
-  right: -420px;
-  bottom: -400px;
+  right: -35px;
+  bottom: -260px;
   position: relative;
-
   cursor: pointer;
+}
+.trailerTitle {
+  font-size: 20px;
+  padding-top: 40vh;
+}
+
+.trailerDesc {
+  display: none;
+}
+.mainMovieBtn {
+  display: none;
+}
+
+.loginForm {
+  width: 40vw;
+  height: 40vh;
+  position: absolute;
+  top: 20%;
+  left: 18%;
+  background-color: rgba(0, 0, 0, 0.862);
+  padding: 55px;
+}
+
+@media (min-width: 1024px) {
+  .loginForm {
+    width: 20vw;
+    height: 50vh;
+    left: 35%;
+  }
+  .mainMovieBtn {
+    display: inline;
+  }
+  .trailerDesc {
+    display: flex;
+  }
+  .trailerTitle {
+    font-size: 50px;
+    padding-top: 35vh;
+  }
+  .GPTCloseBtn {
+    right: -420px;
+    bottom: -400px;
+  }
+  .trailerText {
+    top: 0px;
+    padding-left: 100px;
+    aspect-ratio: 16/9;
+  }
+  .movieTileImg {
+    height: 250px;
+    width: 200px;
+    margin-right: 10px;
+    margin-top: 0px;
+  }
+
+  .GPTSearchBtn {
+    left: 17.5vw;
+    top: 45px;
+  }
+  .GPTSearchBox {
+    width: 250px;
+    left: 17vw;
+    top: 45px;
+  }
+  .headerMedia {
+    flex-direction: row;
+  }
+  .netflixLogo {
+    left: "100px";
+  }
+  .trailerVideo {
+    margin-top: -140px;
+    margin-bottom: 100px;
+  }
+  .languageSelect {
+    margin-top: -5px;
+  }
+  .dialogBox {
+    width: 55vw;
+    height: 60vh;
+  }
 }

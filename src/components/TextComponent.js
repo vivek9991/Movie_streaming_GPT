@@ -4,18 +4,17 @@ const TextComponent = ({ mainMovie }) => {
   return (
     <div
       style={{
-        paddingLeft: "100px",
         width: "93%",
-        aspectRatio: "16/9",
         position: "absolute",
-        top: "0px",
         background: "linear-gradient(to right, black, transparent)",
       }}
+      className="trailerText"
     >
-      <h1 style={{ paddingTop: "35vh", color: "white" }}>
+      <h1 className="trailerTitle " style={{ color: "white" }}>
         {mainMovie.original_title}
       </h1>
       <p
+        className="trailerDesc"
         style={{
           color: "white",
           marginTop: "10px",

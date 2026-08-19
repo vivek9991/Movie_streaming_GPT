@@ -29,20 +29,21 @@ const Header = () => {
 
   const [openGPTPanel, setOpenGPTPanel] = React.useState(false);
   return (
-    <>
+    <div className="mainHeader">
       <img
+        className="image"
         style={{ zIndex: 100 }}
         className="netflixLogo"
         src={LOGO}
         alt="netflixlogo"
       />
       <div
+        className="headerMedia"
         style={{
           position: "absolute",
           color: "white",
           right: "20px",
           top: "20px",
-          display: "flex",
           zIndex: 100,
         }}
       >
@@ -81,13 +82,13 @@ const Header = () => {
         {openGPTPanel && (
           <select
             onChange={(e) => dispatch(toggleLanguage(e.target.value))}
+            className="languageSelect"
             style={{
               backgroundColor: "transparent",
               color: "white",
               border: "1px solid white",
               borderRadius: "10px",
               marginLeft: "15px",
-              marginTop: "-5px",
               padding: "5px",
             }}
           >
@@ -102,7 +103,7 @@ const Header = () => {
           <GPTPanel setOpenGPTPanel={setOpenGPTPanel} />
         )}
       </div>
-    </>
+    </div>
   );
 };
 

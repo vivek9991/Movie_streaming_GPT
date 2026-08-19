@@ -4,11 +4,7 @@ import { movieUrl } from "./utils/constants";
 const MovieTile = ({ movie }) => {
   return (
     <img
-      style={{
-        height: "250px",
-        width: "200px",
-        marginRight: "10px",
-      }}
+      className="movieTileImg"
       src={movieUrl + movie.poster_path}
       alt={movie.original_title}
     />
