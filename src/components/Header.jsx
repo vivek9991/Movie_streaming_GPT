@@ -60,21 +60,6 @@ const Header = () => {
             >
               GPT Search
             </Link>
-
-            {/* <button
-              style={{
-                width: "150px",
-                border: "none",
-                background: "transparent",
-                color: "white",
-                fontSize: "15px",
-              }}
-              onClick={() => dispatch(toggleLanguage())}
-            >
-              {defaultLanguage === languageType.Hindi
-                ? language.hindi.changeLanguage
-                : language.en.changeLanguage}
-            </button> */}
           </>
         )}
         {userData?.displayName}

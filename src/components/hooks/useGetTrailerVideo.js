@@ -8,6 +8,9 @@ export const useGetTrailerVideo = (movieId) => {
 
   const dispatch = useDispatch();
   const trailerId = useSelector((store) => store.movieList.trailerId);
+  const movieIdStore = useSelector(
+    (store) => store.movieList.movieIdOfTrailerId,
+  );
 
   const getMovie = async () => {
     const response = await fetch(url, options);
@@ -16,11 +19,11 @@ export const useGetTrailerVideo = (movieId) => {
       (result) => result.type === "Trailer" && result.site === "YouTube",
     );
     const trailer = trailers.length ? trailers[0] : data[0];
-    dispatch(setTrailerId(trailer?.key));
+    dispatch(setTrailerId({ movieId: movieId, trailerId: trailer?.key }));
   };
 
   React.useEffect(() => {
-    getMovie();
+    movieIdStore !== movieId && getMovie();
   }, [movieId]);
   return trailerId;
 };

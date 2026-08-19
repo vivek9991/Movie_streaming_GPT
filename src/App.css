@@ -70,19 +70,19 @@
 
 .dialogBox {
   background-color: rgb(34, 29, 29);
-  width: 50vw;
-  height: 50vh;
+  width: 55vw;
+  height: 60vh;
   position: absolute;
   top: 25vh;
-  left: -55vw;
+  left: -58vw;
   opacity: 98%;
 }
 
 .GPTSearchBox {
   width: 250px;
   height: 30px;
-  left: 12vw;
-  top: 55px;
+  left: 17vw;
+  top: 45px;
   position: relative;
   font-size: 15px;
   font-family:
@@ -94,8 +94,8 @@
 }
 
 .GPTSearchBtn {
-  left: 13vw;
-  top: 55px;
+  left: 17.5vw;
+  top: 45px;
   position: relative;
   background-color: red;
   color: white;
@@ -103,13 +103,14 @@
   height: 30px;
   border: 2px solid red;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .GPTCloseBtn {
   color: white;
   text-decoration: none;
-  right: -330px;
-  bottom: -385px;
+  right: -420px;
+  bottom: -400px;
   position: relative;
 
   cursor: pointer;

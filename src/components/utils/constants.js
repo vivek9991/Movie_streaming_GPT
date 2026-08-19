@@ -11,13 +11,11 @@ export const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZWM4Zjk4NTk2ZDc0Y2ExOTM5ODM5NmM4NjNiN2M3MSIsIm5iZiI6MTc4NDIyNTU2NS43ODcwMDAyLCJzdWIiOiI2YTU5MWYxZDM0MjQ5OTkxNjg2MjcxOGQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.Ykmy39cR9GTd20-prXFBv69YdXMQ2YkYeF35I-Ybyfs",
+    Authorization: "Bearer " + process.env.REACT_APP_TMDB_KEY,
   },
 };
 
 export const movieUrl = "https://image.tmdb.org/t/p/w200/";
-
 export const languageType = {
   English: "en",
   Hindi: "hindi",
@@ -29,3 +27,11 @@ export const supportedLanguages = [
   { value: languageType.Hindi, label: language.common.Hindi },
   { value: languageType.Spanish, label: language.common.Spanish },
 ];
+
+export const query =
+  "Do not add disclaimers and Act as a movie recoomndation system and Give me the answer in just the names of the requested value. Nothing extra is needed. Only give me names of all movies comma spearated strings which satisfy condition: ";
+
+export const getMovieFromNameUrl = (name) =>
+  `https://api.themoviedb.org/3/search/movie?query=${name}&include_adult=false&language=en-US&page=1`;
+
+export const GPT_KEY = process.env.REACT_APP_CHAT_API_KEY;

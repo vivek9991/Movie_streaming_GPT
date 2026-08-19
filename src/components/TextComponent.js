@@ -5,7 +5,7 @@ const TextComponent = ({ mainMovie }) => {
     <div
       style={{
         paddingLeft: "100px",
-        width: "100%",
+        width: "93%",
         aspectRatio: "16/9",
         position: "absolute",
         top: "0px",
